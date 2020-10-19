@@ -1,0 +1,14 @@
+{
+	"id": "7ab6be72-6ca5-4048-8982-7ee982b4a445",
+	"name": "Dev",
+	"values": [
+		{
+			"key": "baseUrl",
+			"value": "https://ghibliapi.herokuapp.com",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-10-19T02:12:08.731Z",
+	"_postman_exported_using": "Postman/7.33.1"
+}

@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "14ac7013-6170-4233-ad38-439a9d0ef1e5",
+		"name": "ghibliapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Vehicles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eeff153d-1fdc-4c50-8a0a-42a86278c72d",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"var amountOfArray = jsonData.length;",
+							"var arrayProperties = ['id', 'name', 'description', 'vehicle_class', 'length', 'pilot', 'films', 'url'];",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Status code is 200 OK\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response Result is Present in Array\", function () {   ",
+							"    pm.expect(jsonData).to.be.ok;",
+							"    pm.expect(jsonData).to.be.an(\"array\");",
+							"});",
+							"",
+							"pm.test(\"Total amount array = \" + amountOfArray , function () {",
+							"    pm.expect(amountOfArray) == true;",
+							"});",
+							"",
+							"pm.test(\"Each array will have properties \", function () {",
+							"    for(var i = 0; i < amountOfArray; i++){",
+							"        pm.expect(jsonData[i]).to.have.keys(arrayProperties).and.to.be.an(\"object\");",
+							"    }",
+							"});",
+							"pm.test(\"Response time is less than 400ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/vehicles",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vehicles"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
